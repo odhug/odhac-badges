@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage[default]{droidserif}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{csvtools}
+\usepackage{graphicx}
+
+% Badge parameters
+\newcommand{\badgeheight}{55mm}
+\newcommand{\badgewidth}{87mm}
+
+%Logo should be placed on document with same size
+\newcommand\imgcmd{\includegraphics[width=\badgewidth,height=\badgeheight]{logo}}
+\setlength{\oddsidemargin}{-15mm}
+\setlength{\fboxsep}{0mm}
+
+\pagestyle{empty}
+\begin{document}
+\applyCSVfile{names.csv}{%
+  \noindent\framebox[\badgewidth]{%
+    \rlap{\raisebox{-\badgeheight}{\hspace{1.6mm}\imgcmd}}
+    \begin{minipage}[t][\badgeheight]{\badgewidth}
+      \vspace{3mm}
+      \sffamily \centering
+      \textbf{OdHAC}
+      \\[1mm]
+      \textbf{Haskell Hackathon}
+      \\[8mm]
+      \colorbox{Dandelion}{
+        \begin{minipage}{84mm}
+          \sffamily \centering
+          \fontsize{20}{26} \textbf{\strut \insertName}
+        \end{minipage}
+      }
+      \\[0.5mm]
+      \vspace{4mm} 
+      \large\itshape\insertNickname
+    \end{minipage}
+  }
+  \hspace{4mm}
+  \vspace{4mm}
+}
+\end{document}
