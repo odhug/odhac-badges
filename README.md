@@ -1,4 +1,4 @@
 odhac-badges
 ============
 
-Badge generator for OdHAC
+Badge generator for OdHac
