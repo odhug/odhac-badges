@@ -1,11 +1,15 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage[utf8]{inputenc}
+%\usepackage[xetex]{graphicx}
+%\usepackage{xunicode}
+%\usepackage{xltxtra}
+\usepackage{fontspec}
+%\usepackage[utf8]{inputenc}
 \usepackage[usenames,dvipsnames]{xcolor}
 %\usepackage[default]{droidserif}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{fullpage}
 \usepackage{csvtools}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 
 % Badge parameters
 \newcommand{\badgeheight}{55mm}
@@ -15,8 +19,9 @@
 \newcommand\imgcmd{\includegraphics[width=\badgewidth,height=\badgeheight]{logo}}
 \setlength{\oddsidemargin}{-15mm}
 \setlength{\fboxsep}{0mm}
-
+\newfontfamily\collfont{Collator.otf}
 \pagestyle{empty}
+
 \begin{document}
 \applyCSVfile{names.csv}{%
   \noindent\framebox[\badgewidth]{%
@@ -30,8 +35,10 @@
      % \\[8mm]
       \\[14mm]
       \begin{minipage}{84mm}
-        \sffamily \centering
-        \fontsize{20}{26} \textbf{\strut \insertName}
+        \collfont
+        % \sffamily 
+        \centering
+        \fontsize{30}{30} \textbf{\strut \insertName}
       \end{minipage}
       \\[0.5mm]
       \vspace{4mm} 
