@@ -1,11 +1,10 @@
 \documentclass[a4paper,12pt]{article}
 %\usepackage[xetex]{graphicx}
+\usepackage{fontspec}
 %\usepackage{xunicode}
 %\usepackage{xltxtra}
-\usepackage{fontspec}
 %\usepackage[utf8]{inputenc}
 \usepackage[usenames,dvipsnames]{xcolor}
-%\usepackage[default]{droidserif}
 %\usepackage[T1]{fontenc}
 \usepackage{fullpage}
 \usepackage{csvtools}
@@ -21,31 +20,34 @@
 \setlength{\fboxsep}{0mm}
 \newfontfamily\collfont{Collator.otf}
 \pagestyle{empty}
-
 \begin{document}
+
 \applyCSVfile{names.csv}{%
-  \noindent\framebox[\badgewidth]{%
-    \rlap{\raisebox{-\badgeheight}{\hspace{1.6mm}\imgcmd}}
-    \begin{minipage}[t][\badgeheight]{\badgewidth}
-      \vspace{3mm}
-      \sffamily \centering
-     % \textbf{OdHac}
-     % \\[1mm]
-     % \textbf{Haskell Hackathon}
-     % \\[8mm]
-      \\[14mm]
-      \begin{minipage}{84mm}
-        \collfont
-        % \sffamily 
-        \centering
-        \fontsize{30}{30} \textbf{\strut \insertName}
-      \end{minipage}
-      \\[0.5mm]
-      \vspace{4mm} 
-      \large\itshape\insertNickname
-    \end{minipage}
-  }
-  \hspace{0mm}
-  \vspace{4mm}
+    \noindent\framebox[\badgewidth]{%
+        \rlap
+            {\raisebox
+                {-\badgeheight}{\hspace{1.6mm}\imgcmd}
+            }
+        \begin{minipage}[t][\badgeheight]{\badgewidth}
+            \vspace{0mm}
+            %\sffamily 
+            \centering
+            % \textbf{OdHAC}
+            %\\[1mm]
+            % \textbf{Haskell Hackathon}
+            %\\[8mm]
+            \\[10mm]
+            \begin{minipage}{84mm}
+                \collfont
+               %\sffamily 
+                \centering
+                \fontsize{30}{30} \textbf{\strut \insertName}
+                \end{minipage}            \\[0mm]
+            \vspace{4mm} 
+            \fontsize{25}{25} \insertNickname
+        \end{minipage}
+    }
+    \hspace{-1.7mm}
+    \vspace{-0.4mm}
 }
 \end{document}
