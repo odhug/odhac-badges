@@ -1,59 +1,49 @@
 \documentclass[a4paper,12pt]{article}
-%\usepackage[xetex]{graphicx}
-\usepackage{fontspec}
-%\usepackage{xunicode}
-%\usepackage{xltxtra}
-%\usepackage[utf8]{inputenc}
 \usepackage[usenames,dvipsnames]{xcolor}
-%\usepackage[T1]{fontenc}
+\usepackage{fontspec}
 \usepackage{fullpage}
-\usepackage{csvtools}
-%\usepackage{graphicx}
-\usepackage[
-top = -4mm, 
-bottom = 0mm,
-left   = 21mm,
-right  = 21mm]{geometry}
-
+\usepackage{datatool}
+\usepackage[top =-3mm,bottom=0mm, left=20mm, right=20mm]{geometry}
 
 % Badge parameters
 \newcommand{\badgeheight}{55mm}
 \newcommand{\badgewidth}{87mm}
 
 %Logo should be placed on document with same size
-\newcommand\imgcmd{\includegraphics[width=\badgewidth,height=\badgeheight]{logo}}
-\setlength{\oddsidemargin}{0mm}
-\setlength{\fboxsep}{0mm}
-\newfontfamily\collfont{Collator.otf}
-\pagestyle{empty}
-\begin{document}
+%\newcommand\imgcmd{\includegraphics[width=\badgewidth,height=\badgeheight]{logo}}
 
-\applyCSVfile{names.csv}{%
-    \noindent\framebox[\badgewidth]{%
-        \rlap
-            {\raisebox
-                {-\badgeheight}{\hspace{1.6mm}\imgcmd}
-            }
+\newfontfamily \collfont {Collator.otf}
+
+\pagestyle{empty}
+
+\DTLloaddb{names}{names.csv}
+
+\begin{document}
+    \DTLforeach*{names}{% 
+    \name=Name,\nickname=Nickname}{%
+        \noindent
+        \framebox [\badgewidth]{%
+        \rlap{ 
+            \raisebox{
+                -\badgeheight}{ 
+                    \hspace {1.6mm} %\imgcmd 
+                }
+            }    
         \begin{minipage}[t][\badgeheight]{\badgewidth}
             \vspace{0mm}
-            %\sffamily 
             \centering
-            % \textbf{OdHAC}
-            %\\[1mm]
-            % \textbf{Haskell Hackathon}
-            %\\[8mm]
             \\[10mm]
             \begin{minipage}{84mm}
                 \collfont
-               %\sffamily 
                 \centering
-                \fontsize{30}{30} \textbf{\strut \insertName}
-                \end{minipage}            \\[0mm]
+                \fontsize{30}{30} \textbf{\strut \name}
+                \end{minipage}            
+            \\[0mm]
             \vspace{4mm} 
-            \fontsize{25}{25} \insertNickname
+            \fontsize{25}{25} \nickname
         \end{minipage}
-    }
+        }   
     \hspace{-1.7mm}
     \vspace{-0.4mm}
-}
+    }
 \end{document}
